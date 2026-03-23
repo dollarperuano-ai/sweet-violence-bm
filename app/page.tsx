@@ -548,7 +548,7 @@ export default function Home() {
             marginBottom: 12,
           }}
         >
-          Albion Black Market Tool
+          Sweet Violence BM
         </h1>
 
         <p
