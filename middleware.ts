@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
-const ENABLE_SITE = false
+const ENABLE_SITE = true
 
 export function middleware(request: NextRequest) {
   if (!ENABLE_SITE) {
