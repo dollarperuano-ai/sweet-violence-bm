@@ -53,7 +53,7 @@ const CHUNK_SIZE = 35
 const TOP_LIMIT = 30
 const SEARCH_LIMIT = 50
 const CACHE_TTL_MS = 60000
-const BM_SAFETY_FACTOR = 0.75
+const BM_SAFETY_FACTOR = 0.85
 
 export default function Home() {
   const [items, setItems] = useState<Item[]>([])
@@ -72,7 +72,7 @@ export default function Home() {
     maxTier: 6,
     maxEnchant: 2,
     maxBuyPrice: 1500000,
-    minProfit: 50000,
+    minProfit: 20000,
   })
 
   const refreshRef = useRef<NodeJS.Timeout | null>(null)
@@ -451,7 +451,7 @@ export default function Home() {
 
     try {
       const filteredItems = items.filter((item) => itemMatchesFilters(item, filters))
-      const limitedItems = filteredItems.slice(0, 180)
+      const limitedItems = filteredItems.slice(0, 600)
       const profits = await fetchBestProfits(limitedItems, filters)
 
       setTopResults(profits.slice(0, TOP_LIMIT))
@@ -487,7 +487,7 @@ export default function Home() {
         return
       }
 
-      const limitedItems = matched.slice(0, 80)
+      const limitedItems = matched.slice(0, 200)
       const profits = await fetchBestProfits(limitedItems, filters)
 
       setSearchResults(profits.slice(0, SEARCH_LIMIT))
