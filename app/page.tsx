@@ -53,7 +53,7 @@ const CHUNK_SIZE = 35
 const TOP_LIMIT = 30
 const SEARCH_LIMIT = 50
 const CACHE_TTL_MS = 60000
-const BM_SAFETY_FACTOR = 0.85
+const BM_SAFETY_FACTOR = 1
 
 export default function Home() {
   const [items, setItems] = useState<Item[]>([])
@@ -172,7 +172,7 @@ export default function Home() {
   }
 
   async function safeFetchPrices(ids: string[]): Promise<ApiRow[]> {
-    const url = `https://west.albion-online-data.com/api/v2/stats/prices/${ids.join(",")}`
+    const url = `https://west.albion-online-data.com/api/v2/stats/prices/${ids.join(",")}?locations=Black%20Market,Bridgewatch,Fort%20Sterling,Lymhurst,Martlock,Thetford&qualities=1`
 
     try {
       const res = await fetch(url, { cache: "no-store" })
@@ -226,8 +226,7 @@ export default function Home() {
   }
 
   function getBmReferencePrice(bm: ApiRow) {
-    if (bm.buy_price_max && bm.buy_price_max > 0) return bm.buy_price_max
-    return bm.sell_price_min
+  return bm.buy_price_max && bm.buy_price_max > 0 ? bm.buy_price_max : 0
   }
 
   function isSuspicious(args: {
@@ -640,7 +639,7 @@ export default function Home() {
               <div style={heroSideTitle}>Modo actual</div>
               <div style={heroSideMain}>Profit Seguro</div>
               <div style={heroSideSub}>
-                BM conservador · No Fake
+                Strict BM · venta instantánea
               </div>
             </div>
           </div>
