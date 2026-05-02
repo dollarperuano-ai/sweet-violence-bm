@@ -627,11 +627,10 @@ export default function Home() {
         <section style={heroCard}>
           <div style={heroTopRow}>
             <div>
-              <div style={brandBadge}>Sweet Violence Guild</div>
-              <h1 style={heroTitle}>Sweet Violence BM</h1>
+              <div style={brandBadge}>Primacy</div>
+              <h1 style={heroTitle}>Primacy BM</h1>
               <p style={heroSubtitle}>
-                Scanner visual para flips más realistas. Ahora prioriza profit seguro,
-                confianza y oportunidades menos engañosas.
+                Scanner de Black Market optimizado para profit real y ejecución segura.
               </p>
             </div>
 
