@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
           font-family:system-ui,sans-serif;
         ">
           <div style="text-align:center;">
-            <h1 style="margin-bottom:12px;">Sweet Violence BM</h1>
+            <h1 style="margin-bottom:12px;">PRIMACY BM</h1>
             <p style="color:#9ca3af;">Sitio temporalmente fuera de servicio.</p>
           </div>
         </body>

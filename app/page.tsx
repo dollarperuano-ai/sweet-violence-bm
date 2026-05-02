@@ -48,7 +48,7 @@ type Filters = {
 
 const TAX_RATE = 0.065
 const MAX_PRICE_AGE_MINUTES = 12
-const AUTO_REFRESH_MS = 60000
+const AUTO_REFRESH_MS = 120000
 const CHUNK_SIZE = 35
 const TOP_LIMIT = 30
 const SEARCH_LIMIT = 50
@@ -316,7 +316,7 @@ export default function Home() {
 
       if (data.length === 0) {
         hadThrottle = true
-        await sleep(800)
+        await sleep(2000)
         continue
       }
 
@@ -418,7 +418,7 @@ export default function Home() {
         }
       }
 
-      await sleep(250)
+      await sleep(600)
     }
 
     const finalData = Object.values(bestByItem).sort((a, b) => {
@@ -450,7 +450,7 @@ export default function Home() {
 
     try {
       const filteredItems = items.filter((item) => itemMatchesFilters(item, filters))
-      const limitedItems = filteredItems.slice(0, 600)
+      const limitedItems = filteredItems.slice(0, 200)
       const profits = await fetchBestProfits(limitedItems, filters)
 
       setTopResults(profits.slice(0, TOP_LIMIT))
@@ -486,7 +486,7 @@ export default function Home() {
         return
       }
 
-      const limitedItems = matched.slice(0, 200)
+      const limitedItems = matched.slice(0, 120)
       const profits = await fetchBestProfits(limitedItems, filters)
 
       setSearchResults(profits.slice(0, SEARCH_LIMIT))
